@@ -21,7 +21,7 @@ export const App = () => (
 
     <Form />
 
-    <ht />
+    <hr />
     <Hello />
     <Info />
   </div>
