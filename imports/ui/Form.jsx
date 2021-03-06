@@ -10,6 +10,7 @@ export default function Form() {
 
   return (
     <form onSubmit={handleSubmit(onSubmit)}>
+      <label for="firstname">First Name</label>
       <input name='firstname' ref={register} /> {/* register an input */}
       <input name='lastname' ref={register({ required: true })} />
       {errors.lastname && 'Last name is required.'}
