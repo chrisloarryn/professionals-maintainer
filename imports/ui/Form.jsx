@@ -1,5 +1,7 @@
 import React from 'react'
 import { parseRut } from './helpers/rut'
+import { specialties } from './mock/specialties'
+
 const { useForm } = require('react-hook-form')
 const { clean, format, validate } = require('rut.js')
 
