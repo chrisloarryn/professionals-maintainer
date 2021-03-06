@@ -1,4 +1,4 @@
-const specialties = [
+export const specialties = [
   {
     nombre: ''
   },
