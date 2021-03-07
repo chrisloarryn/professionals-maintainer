@@ -4,6 +4,8 @@ import { specialties } from './mock/specialties'
 import { v4 as uuidv4 } from 'uuid'
 import { ProfessionalsCollection } from '../api/links';
 
+import { Fieldset } from './form/elements/FieldSet'
+
 const { useForm } = require('react-hook-form')
 const { clean, format, validate } = require('rut.js')
 
@@ -51,7 +53,10 @@ export default function Form() {
 
   return (
     <form onSubmit={handleSubmit(onSubmit)} style={{ width: '40%' }}>
-      <fieldset style={{ display: 'flex', flexDirection: 'column' }}>
+      <Fieldset legendTitle="Professional Creation Form">
+        <h1>hello world</h1>
+      </Fieldset>
+      <fieldset>
         <legend>Professional Creation Form:</legend>
         <label htmlFor='names'>Nombres: </label>
         <input name='names' type='text' ref={register({ required: true })} />
