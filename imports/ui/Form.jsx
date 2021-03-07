@@ -1,16 +1,25 @@
 import React from 'react'
 import { parseRut } from './helpers/rut'
 import { specialties } from './mock/specialties'
-import { v4 as uuidv4 } from 'uuid'
-import { ProfessionalsCollection } from '../api/links';
+import { ProfessionalsCollection } from '../api/links'
 
-import { Fieldset } from './form/elements/FieldSet'
+import { StyledForm, StyledTitle, StyledFormContainer } from './form/styles'
+import { Input } from './form/elements/Input'
+import { Select } from './form/elements/select'
+import { Button } from './form/elements/button'
 
 const { useForm } = require('react-hook-form')
 const { clean, format, validate } = require('rut.js')
 
 export default function Form() {
-  const { register, handleSubmit, errors, setValue, setError, reset } = useForm() // initialize the hook
+  const {
+    register,
+    handleSubmit,
+    errors,
+    setValue,
+    setError,
+    reset
+  } = useForm() // initialize the hook
   const isDisabledSubmit = !!Object.keys(errors).length
 
   const onSubmit = (data) => {
@@ -39,52 +48,56 @@ export default function Form() {
       ...data,
       rut: verifiedRut
     }
-    console.log(dataToSave)
     ProfessionalsCollection.insert(dataToSave)
     reset()
   }
-
-  console.log(specialties)
-
   const handleRutChange = ({ target }) => {
     const { name, value } = target
     setValue(name, parseRut(value))
   }
 
   return (
-    <form onSubmit={handleSubmit(onSubmit)} style={{ width: '40%' }}>
-      <Fieldset legendTitle="Professional Creation Form">
-        <h1>hello world</h1>
-      </Fieldset>
-      <fieldset>
-        <legend>Professional Creation Form:</legend>
-        <label htmlFor='names'>Nombres: </label>
-        <input name='names' type='text' ref={register({ required: true })} />
-        {errors.names && 'Los nombres son requeridos.'}
-
-        <label htmlFor='firstSurname'>Apellido Paterno: </label>
-        <input name='firstSurname' ref={register({ required: true })} />
-        <label htmlFor='secondSurname'>Apellido Materno: </label>
-        <input name='secondSurname' ref={register({ required: true })} />
-        <label htmlFor='rut'>Rut:</label>
-        <input
-          name='rut'
-          onChange={handleRutChange}
+    <StyledForm onSubmit={handleSubmit(onSubmit)}>
+      <StyledFormContainer>
+        <StyledTitle>Professional Creation Form:</StyledTitle>
+        <Input
+          name='names'
+          displayText='Nombres'
           type='text'
-          ref={register({ required: true, min: 11, pattern: validate })}
+          refProp={register({ required: true })}
         />
-        {errors.rut && 'Rut Invalido.'}
-
-        <label htmlFor='specialty'>Especialidad Medica:</label>
-        <select id='specialty' name='specialty'>
-          {specialties?.map((specialty) => (
-            <option key={specialty._id ?? uuidv4()} value={specialty?._id}>
-              {specialty.nombre ?? 'seleccione'}
-            </option>
-          ))}
-        </select>
-        <input type='submit' disabled={isDisabledSubmit} />
-      </fieldset>
-    </form>
+        {errors.names && <span>Los nombres son requeridos.</span>}
+        <Input
+          name='firstSurname'
+          displayText='Apellido Paterno'
+          type='text'
+          refProp={register({ required: true })}
+        />
+        {errors.firstSurname && <span>Primer Apellido es requerido.</span>}
+        <Input
+          name='secondSurname'
+          displayText='Apellido Materno'
+          type='text'
+          refProp={register({ required: true })}
+        />
+        {errors.secondSurname && <span>Segundo Apellido es requerido.</span>}
+        <Input
+          name='rut'
+          displayText='Rut'
+          type='text'
+          refProp={register({ required: true, min: 11, pattern: validate })}
+          onChange={handleRutChange}
+        />
+        {errors.rut && 'Rut Invalido o Requerido.'}
+        <Select
+          name='specialty'
+          displayText='Especialidad Medica'
+          iterableElements={specialties}
+          refProp={register({ required: true })}
+        />
+        {errors.specialty && 'La Especialidad es requerida.'}
+        <Button isDisabledSubmit={isDisabledSubmit} label='Crear' type='submit' />
+      </StyledFormContainer>
+    </StyledForm>
   )
 }
