@@ -29,6 +29,12 @@ export const StyledAppWrapper = styled.div`
   /* flex-direction: column; */
   justify-content: center;
 `
+
+export const StyledSpan = styled.span`
+  font-size: 12px;
+  margin-left: 5px;
+  color: tomato;
+`
 // const myPropTypes = {
 //   children: PropTypes.element.isRequired,
 //   legendTitle: PropTypes.string

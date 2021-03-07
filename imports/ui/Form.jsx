@@ -3,7 +3,12 @@ import { parseRut } from './helpers/rut'
 import { specialties } from './mock/specialties'
 import { ProfessionalsCollection } from '../api/links'
 
-import { StyledForm, StyledTitle, StyledFormContainer } from './form/styles'
+import {
+  StyledForm,
+  StyledTitle,
+  StyledFormContainer,
+  StyledSpan
+} from './form/styles'
 import { Input } from './form/elements/Input'
 import { Select } from './form/elements/select'
 import { Button } from './form/elements/button'
@@ -66,21 +71,25 @@ export default function Form() {
           type='text'
           refProp={register({ required: true })}
         />
-        {errors.names && <span>Los nombres son requeridos.</span>}
+        {errors.names && <StyledSpan>Los nombres son requeridos.</StyledSpan>}
         <Input
           name='firstSurname'
           displayText='Apellido Paterno'
           type='text'
           refProp={register({ required: true })}
         />
-        {errors.firstSurname && <span>Primer Apellido es requerido.</span>}
+        {errors.firstSurname && (
+          <StyledSpan>Primer Apellido es requerido.</StyledSpan>
+        )}
         <Input
           name='secondSurname'
           displayText='Apellido Materno'
           type='text'
           refProp={register({ required: true })}
         />
-        {errors.secondSurname && <span>Segundo Apellido es requerido.</span>}
+        {errors.secondSurname && (
+          <StyledSpan>Segundo Apellido es requerido.</StyledSpan>
+        )}
         <Input
           name='rut'
           displayText='Rut'
@@ -88,15 +97,21 @@ export default function Form() {
           refProp={register({ required: true, min: 11, pattern: validate })}
           onChange={handleRutChange}
         />
-        {errors.rut && 'Rut Invalido o Requerido.'}
+        {errors.rut && <StyledSpan>Rut Invalido o Requerido.</StyledSpan>}
         <Select
           name='specialty'
           displayText='Especialidad Medica'
           iterableElements={specialties}
           refProp={register({ required: true })}
         />
-        {errors.specialty && 'La Especialidad es requerida.'}
-        <Button isDisabledSubmit={isDisabledSubmit} label='Crear' type='submit' />
+        {errors.specialty && (
+          <StyledSpan>La Especialidad es requerida.</StyledSpan>
+        )}
+        <Button
+          isDisabledSubmit={isDisabledSubmit}
+          label='Crear'
+          type='submit'
+        />
       </StyledFormContainer>
     </StyledForm>
   )

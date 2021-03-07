@@ -20,7 +20,7 @@ export const Info = () => {
       showDenyButton: true,
       focusDeny: true,
       allowEscapeKey: true,
-      text: `si continua, el profesional ${fullName}, sera eliminado.`,
+      text: `si continua, el profesional "${fullName}", sera eliminado.`,
       allowEnterKey: false,
       confirmButtonText: `Si, quiero eliminarlo`,
       denyButtonText: `No, cancelar`
@@ -66,7 +66,7 @@ export const Info = () => {
                   {person.specialty} - {renderSpecialtyName(person.specialty)}
                 </td>
                 <td onClick={() => handleDeleteItem(person)}>
-                  <FaMinusSquare />
+                  <FaMinusSquare color='red' cursor='pointer' />
                 </td>
               </tr>
             )
