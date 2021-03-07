@@ -8,9 +8,7 @@ import { specialties } from '../../mock/specialties'
 import './styles.css'
 
 export const Table = () => {
-  const professionals = useTracker(() => {
-    return ProfessionalsCollection.find().fetch()
-  })
+  const professionals = useTracker(() => ProfessionalsCollection.find().fetch())
 
   const handleDeleteItem = (person) => {
     if (!person._id)
