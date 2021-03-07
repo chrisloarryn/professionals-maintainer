@@ -1,11 +1,11 @@
 import React from 'react'
-import styled from 'styled-components'
 import PropTypes from 'prop-types'
+import styled from 'styled-components'
 
 const myPropTypes = {
-  type: PropTypes.string,
   isDisabledSubmit: PropTypes.bool.isRequired,
-  label: PropTypes.string.isRequired
+  label: PropTypes.string.isRequired,
+  type: PropTypes.string
 }
 
 const StyledButton = styled.button`
@@ -18,12 +18,10 @@ const StyledButton = styled.button`
   }
 `
 
-export const Button = ({ label, isDisabledSubmit, type }) => {
-  return (
-    <StyledButton type={type ? type : 'submit'} disabled={isDisabledSubmit}>
-      {label}
-    </StyledButton>
-  )
-}
+export const Button = ({ isDisabledSubmit, label, type = 'submit' }) => (
+  <StyledButton type={type} disabled={isDisabledSubmit}>
+    {label}
+  </StyledButton>
+)
 
 Button.propTypes = myPropTypes

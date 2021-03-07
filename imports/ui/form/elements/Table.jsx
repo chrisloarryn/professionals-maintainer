@@ -1,10 +1,10 @@
 import React from 'react'
 import { useTracker } from 'meteor/react-meteor-data'
 import { FaMinusSquare } from 'react-icons/fa'
-import { ProfessionalsCollection } from '../api/links'
 import Swal from 'sweetalert2'
 
-import { specialties } from './mock/specialties'
+import { ProfessionalsCollection } from '../../../api/links'
+import { specialties } from '../../mock/specialties'
 import './styles.css'
 
 export const Table = () => {
@@ -13,17 +13,22 @@ export const Table = () => {
   })
 
   const handleDeleteItem = (person) => {
-    // ProfessionalsCollection.remove(person._id)
+    if (!person._id)
+      return Swal.fire(
+        'El usuario seleccionado no posee ID. Contacte al administrador de bases de datos.',
+        '',
+        'info'
+      )
     const fullName = `${person.names} ${person.firstSurname} ${person.secondSurname}`
     Swal.fire({
-      title: '¿Desea proceder?',
-      showDenyButton: true,
-      focusDeny: true,
-      allowEscapeKey: true,
-      text: `si continua, el profesional "${fullName}", sera eliminado.`,
       allowEnterKey: false,
+      allowEscapeKey: true,
       confirmButtonText: `Si, quiero eliminarlo`,
-      denyButtonText: `No, cancelar`
+      denyButtonText: `No, cancelar`,
+      focusDeny: true,
+      showDenyButton: true,
+      text: `si continua, el profesional "${fullName}", sera eliminado.`,
+      title: '¿Desea proceder?'
     }).then((result) => {
       /* Read more about isConfirmed, isDenied below */
       if (result.isConfirmed) {

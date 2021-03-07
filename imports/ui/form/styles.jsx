@@ -1,5 +1,3 @@
-// import React from 'react'
-// import PropTypes from 'prop-types'
 import styled from 'styled-components'
 
 const darkColor = '#50501a'
@@ -20,7 +18,7 @@ export const StyledTitle = styled.h3`
   color: ${lightColor};
   transition: color 0.5s;
   &:hover {
-    color: ${darkColor}
+    color: ${darkColor};
   }
 `
 
@@ -35,17 +33,3 @@ export const StyledSpan = styled.span`
   margin-left: 5px;
   color: tomato;
 `
-// const myPropTypes = {
-//   children: PropTypes.element.isRequired,
-//   legendTitle: PropTypes.string
-// }
-
-// export const Fieldset = (props) => {
-//   return (
-//     <StyledFieldset>
-//       {props.children}
-//     </StyledFieldset>
-//   )
-// }
-
-// Fieldset.propTypes = myPropTypes

@@ -1,7 +1,8 @@
 import React from 'react'
-import { Form } from './Form'
-import { Table } from './Table.jsx'
+
+import { Form } from './form/Form'
 import { StyledAppWrapper } from './form/styles'
+import { Table } from './form/elements/Table.jsx'
 
 export const App = () => (
   <div>

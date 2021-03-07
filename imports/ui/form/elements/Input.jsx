@@ -2,25 +2,29 @@ import React from 'react'
 import PropTypes from 'prop-types'
 
 const myPropTypes = {
-  name: PropTypes.string.isRequired,
   displayText: PropTypes.string.isRequired,
-  type: PropTypes.string,
+  name: PropTypes.string.isRequired,
+  onChange: PropTypes.func,
   refProp: PropTypes.any.isRequired,
-  onChange: PropTypes.func
+  type: PropTypes.string
 }
 
-export const Input = ({ displayText, name, type, refProp, onChange }) => {
-  return (
-    <>
-      <label htmlFor={name}>{`${displayText}: `}</label>
-      <input
-        name={name}
-        type={type ? type : 'text'}
-        ref={refProp}
-        onChange={onChange}
-      />
-    </>
-  )
-}
+export const Input = ({
+  displayText = '',
+  name,
+  onChange = () => {},
+  refProp,
+  type = 'text'
+}) => (
+  <>
+    <label htmlFor={name}>{`${displayText}: `}</label>
+    <input
+      name={name}
+      type={type}
+      ref={refProp}
+      onChange={onChange}
+    />
+  </>
+)
 
 Input.propTypes = myPropTypes
