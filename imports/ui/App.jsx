@@ -1,6 +1,6 @@
 import React from 'react'
-import Form from './Form'
-import { Info } from './Info.jsx'
+import { Form } from './Form'
+import { Table } from './Table.jsx'
 import { StyledAppWrapper } from './form/styles'
 
 export const App = () => (
@@ -14,7 +14,7 @@ export const App = () => (
     </StyledAppWrapper>
     <hr />
     <StyledAppWrapper>
-      <Info />
+      <Table />
     </StyledAppWrapper>
   </div>
 )

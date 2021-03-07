@@ -16,7 +16,7 @@ import { Button } from './form/elements/button'
 const { useForm } = require('react-hook-form')
 const { clean, format, validate } = require('rut.js')
 
-export default function Form() {
+export const Form = () => {
   const {
     register,
     handleSubmit,

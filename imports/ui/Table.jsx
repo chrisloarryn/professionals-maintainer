@@ -7,7 +7,7 @@ import Swal from 'sweetalert2'
 import { specialties } from './mock/specialties'
 import './styles.css'
 
-export const Info = () => {
+export const Table = () => {
   const professionals = useTracker(() => {
     return ProfessionalsCollection.find().fetch()
   })
