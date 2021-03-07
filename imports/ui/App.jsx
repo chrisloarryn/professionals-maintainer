@@ -4,11 +4,17 @@ import { Info } from './Info.jsx'
 import { StyledAppWrapper } from './form/styles'
 
 export const App = () => (
-  <StyledAppWrapper>
-    <h1>Creacion de Professionales!</h1>
+  <div>
+    <StyledAppWrapper>
+      <h1>Creacion de Profesionales!</h1>
+    </StyledAppWrapper>
     <hr />
-    <Form />
+    <StyledAppWrapper>
+      <Form />
+    </StyledAppWrapper>
     <hr />
-    <Info />
-  </StyledAppWrapper>
+    <StyledAppWrapper>
+      <Info />
+    </StyledAppWrapper>
+  </div>
 )

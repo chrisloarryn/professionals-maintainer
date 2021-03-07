@@ -26,6 +26,7 @@ export const StyledTitle = styled.h3`
 
 export const StyledAppWrapper = styled.div`
   display: flex;
+  /* flex-direction: column; */
   justify-content: center;
 `
 // const myPropTypes = {
