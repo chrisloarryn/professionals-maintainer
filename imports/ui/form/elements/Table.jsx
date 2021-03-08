@@ -17,7 +17,9 @@ export const Table = () => {
         '',
         'info'
       )
-    const fullName = `${person.names} ${person.firstSurname} ${person.secondSurname}`
+    const fullName = `${person.names ?? ''} ${person.firstSurname ?? ''} ${
+      person.secondSurname ?? ''
+    }`
     Swal.fire({
       allowEnterKey: false,
       allowEscapeKey: true,
