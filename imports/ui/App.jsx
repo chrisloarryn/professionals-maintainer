@@ -1,13 +1,13 @@
 import React from 'react'
 
 import { Form } from './form/Form'
-import { StyledAppWrapper } from './form/styles'
+import { StyledAppWrapper, StyledMainTitle } from './form/styles'
 import { Table } from './form/elements/Table.jsx'
 
 export const App = () => (
   <div>
     <StyledAppWrapper>
-      <h1>Creacion de Profesionales!</h1>
+      <StyledMainTitle>Creacion de Profesionales!</StyledMainTitle>
     </StyledAppWrapper>
     <hr />
     <StyledAppWrapper>
