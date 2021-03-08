@@ -1,21 +1,20 @@
 import React from 'react'
+import { useForm } from 'react-hook-form'
+import { clean, format, validate } from 'rut.js'
 
-import { parseRut } from './helpers/rut'
-import { specialties } from './mock/specialties'
-import { ProfessionalsCollection } from '../api/links'
+import { ProfessionalsCollection } from './../../api/links'
+import { parseRut } from './../helpers/rut'
+import { specialties } from './../mock/specialties'
 
 import {
   StyledForm,
   StyledFormContainer,
   StyledSpan,
   StyledTitle
-} from './form/styles'
-import { Button } from './form/elements/button'
-import { Input } from './form/elements/Input'
-import { Select } from './form/elements/select'
-
-const { useForm } = require('react-hook-form')
-const { clean, format, validate } = require('rut.js')
+} from './styles'
+import { Button } from './elements/button'
+import { Input } from './elements/Input'
+import { Select } from './elements/select'
 
 export const Form = () => {
   const {
@@ -26,6 +25,7 @@ export const Form = () => {
     setError,
     setValue
   } = useForm() // initialize the hook
+
   const isDisabledSubmit = !!Object.keys(errors).length
 
   const onSubmit = (data) => {
@@ -80,7 +80,7 @@ export const Form = () => {
           type='text'
         />
         {errors.firstSurname && (
-          <StyledSpan>Primer Apellido es requerido.</StyledSpan>
+          <StyledSpan>El Primer Apellido es requerido.</StyledSpan>
         )}
         <Input
           displayText='Apellido Materno'
@@ -89,7 +89,7 @@ export const Form = () => {
           type='text'
         />
         {errors.secondSurname && (
-          <StyledSpan>Segundo Apellido es requerido.</StyledSpan>
+          <StyledSpan>El Segundo Apellido es requerido.</StyledSpan>
         )}
         <Input
           displayText='Rut'
@@ -98,7 +98,7 @@ export const Form = () => {
           refProp={register({ required: true, min: 11, pattern: validate })}
           type='text'
         />
-        {errors.rut && <StyledSpan>Rut Invalido o Requerido.</StyledSpan>}
+        {errors.rut && <StyledSpan> El Rut Invalido o Requerido.</StyledSpan>}
         <Select
           displayText='Especialidad Medica'
           iterableElements={specialties}

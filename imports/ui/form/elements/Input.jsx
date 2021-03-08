@@ -1,6 +1,8 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 
+import { StyledInput, StyledLabel } from './../styles'
+
 const myPropTypes = {
   displayText: PropTypes.string.isRequired,
   name: PropTypes.string.isRequired,
@@ -17,8 +19,8 @@ export const Input = ({
   type = 'text'
 }) => (
   <>
-    <label htmlFor={name}>{`${displayText}: `}</label>
-    <input
+    <StyledLabel htmlFor={name}>{`${displayText}: `}</StyledLabel>
+    <StyledInput
       name={name}
       type={type}
       ref={refProp}

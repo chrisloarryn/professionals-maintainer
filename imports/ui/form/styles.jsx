@@ -8,9 +8,9 @@ export const StyledForm = styled.form`
 `
 
 export const StyledFormContainer = styled.div`
+  border: 1px solid black;
   display: flex;
   flex-direction: column;
-  border: 1px solid black;
   padding: 10px;
 `
 
@@ -29,7 +29,26 @@ export const StyledAppWrapper = styled.div`
 `
 
 export const StyledSpan = styled.span`
-  font-size: 12px;
-  margin-left: 5px;
   color: tomato;
+  font-size: 12px;
+  margin: -5px 0px 10px 5px;
+`
+
+export const StyledInput = styled.input`
+  height: 15px;
+  margin-bottom: 5px;
+`
+
+export const StyledSelect = styled.select`
+  margin-bottom: 5px;
+`
+
+export const StyledLabel = styled.label`
+  color: ${darkColor};
+  font-size: 14px;
+  margin-left: 5px;
+  transition: color 0.5s;
+  &:hover {
+    color: ${lightColor};
+  }
 `

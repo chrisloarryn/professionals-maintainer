@@ -2,6 +2,8 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import { v4 as uuidv4 } from 'uuid'
 
+import { StyledLabel, StyledSelect } from './../styles'
+
 const myPropTypes = {
   displayText: PropTypes.string.isRequired,
   iterableElements: PropTypes.array,
@@ -11,14 +13,14 @@ const myPropTypes = {
 
 export const Select = ({ displayText, iterableElements, name, refProp }) => (
   <>
-    <label htmlFor={name}>{`${displayText}: `}</label>
-    <select id={name} name={name} ref={refProp}>
+    <StyledLabel htmlFor={name}>{`${displayText}: `}</StyledLabel>
+    <StyledSelect id={name} name={name} ref={refProp}>
       {iterableElements?.map((element) => (
         <option key={element._id ?? uuidv4()} value={element?._id}>
           {element.nombre ?? 'seleccione'}
         </option>
       ))}
-    </select>
+    </StyledSelect>
   </>
 )
 
